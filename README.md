@@ -1,6 +1,6 @@
 # FutureCAD
 
-Code and Dataset for the ICML 2026 Spotlight paper **"Towards High-Fidelity CAD Generation via LLM-Driven Program Generation and Text-Based B-Rep Primitive Grounding"** ([arXiv](https://arxiv.org/abs/2603.11831)).
+Code and Dataset for the **ICML 2026 Spotlight** paper: "<ins>Towards High-Fidelity CAD Generation via LLM-Driven Program Generation and Text-Based B-Rep Primitive Grounding</ins>" ([arXiv](https://arxiv.org/abs/2603.11831)).
 
 ## Dataset
 
