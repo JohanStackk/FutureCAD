@@ -1,0 +1,5 @@
+{
+  "plate": [
+    "import cadquery as cq\nmodel = cq.Workplane('XY').box(40, 30, 5).faces('>Z').workplane().hole(8)"
+  ]
+}

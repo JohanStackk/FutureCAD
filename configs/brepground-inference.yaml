@@ -1,0 +1,49 @@
+train_seed: 123
+test_seed: 123
+data:
+  dataset_path: datasets/grounding_cache
+  split_path: data/splits/grounding.json
+  batch_size: 32
+  train_shuffle: false
+  num_workers: 4
+  limit: -1
+  max_len_uv: 999999999
+model:
+  uv:
+    crv_in_channels: 6
+    surf_in_channels: 7
+    crv_emb_dim: 128
+    srf_emb_dim: 128
+    graph_emb_dim: 256
+    out_dim: 1024
+    heads: 8
+    dropout: 0.1
+    ffn_dim: 4096
+  text:
+    bert_path: weights/brepground/bert-large-uncased
+    d_model: 1024
+    out_dim: 1024
+    heads: 8
+    dropout: 0.1
+    ffn_dim: 1536
+  fusion:
+    d_model: 1024
+    heads: 8
+    depth: 8
+    dropout: 0.1
+    ffn_dim: 4096
+    match_mode: linear
+  loss:
+    use_contrastive: false
+    contrastive_temperature: 0.07
+  inference:
+    threshold: 0.925
+optim:
+  lr: 0.0001
+  weight_decay: 5.0e-05
+trainer:
+  max_epochs: 40
+  accelerator: auto
+  devices: 1
+  precision: 32-true
+  output_dir: outputs/brepground

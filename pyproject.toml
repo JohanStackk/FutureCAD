@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "futurecad"
+version = "0.1.0"
+description = "FutureCAD: CAD generation and text-based B-Rep grounding"
+requires-python = ">=3.10"
+dependencies = ["numpy", "scipy", "trimesh", "plyfile", "PyYAML", "huggingface_hub", "pyarrow"]
+
+[project.optional-dependencies]
+grounding = ["torch", "lightning", "transformers", "omegaconf", "hydra-core", "flask", "safetensors"]
+cad = ["cadquery", "requests", "networkx", "pyDeprecate"]
+llm = ["vllm"]
+
+[project.scripts]
+futurecad-train-grounding = "grounding_brep.train:main"
+futurecad-eval-grounding = "grounding_brep.evaluate:main"
+futurecad-serve-grounding = "grounding_brep.serve:main"
+futurecad-eval = "futurecad.evaluation:main"
+futurecad-generate = "futurecad.generate:main"
+futurecad-text-to-cad = "futurecad.text_to_cad:main"
+futurecad-export = "futurecad.export:main"
+futurecad-convert = "futurecad.convert:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

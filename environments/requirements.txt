@@ -1,0 +1,24 @@
+--find-links https://data.dgl.ai/wheels/cu121/repo.html
+torch==2.7.1
+dgl==1.1.3+cu121
+vllm==0.10.0
+cadquery==2.6.1
+cadquery-ocp==7.8.1.1.post1
+vtk==9.3.1
+numpy==2.2.6
+networkx==3.4.2
+scipy==1.15.2
+trimesh==4.11.0
+plyfile==1.1.3
+PyYAML==6.0.2
+lightning==2.6.0
+transformers==4.57.3
+huggingface_hub==0.36.0
+omegaconf==2.3.0
+hydra-core==1.3.2
+flask==3.1.0
+safetensors==0.6.2
+pydantic==2.11.7
+requests==2.32.3
+pyDeprecate==0.3.2
+pyarrow==20.0.0

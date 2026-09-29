@@ -1,0 +1,1 @@
+Create a rectangular plate 40 mm long, 30 mm wide, and 5 mm thick, with a centered through hole of diameter 8 mm.

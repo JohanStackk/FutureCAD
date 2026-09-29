@@ -1,0 +1,10 @@
+name: futurecad
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pythonocc-core=7.8.1.1=novtk_*
+  - occt=7.8.1=*novtk*
+  - numpy=2.2.6
+  - networkx=3.4.2
