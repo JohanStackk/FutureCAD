@@ -1,0 +1,9 @@
+Generate CadQuery Python code based on the following description: {description}
+
+You must define the final model as the variable `model`, and return the Python code only in the following format:
+```python
+import cq_monkey_patch
+import cadquery as cq
+
+# Your code here, final result assigned to `model`
+```

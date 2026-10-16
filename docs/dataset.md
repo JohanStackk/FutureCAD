@@ -160,7 +160,48 @@ independent of those predictions.
 The Hugging Face dataset stores histories and descriptions; the converter
 above generates the target programs locally.
 
+## Rewritten programs
+
+The `rewritten` configuration of [FutureCAD](https://huggingface.co/datasets/jhlee11/FutureCAD)
+contains Claude-Sonnet-4.5 rewritten CadQuery programs and both description
+levels. Each row uses the original eight-character CAD model ID and inherits
+its split. The train, validation, and test splits contain 77,835, 4,335, and
+4,345 programs, respectively.
+
+Download and read the rewrite Parquet files:
+
+```bash
+hf download jhlee11/FutureCAD --repo-type dataset --include "rewritten/*.parquet" --local-dir datasets/futurecad
+```
+
+```python
+from pathlib import Path
+import pyarrow.dataset as ds
+
+files = sorted(Path("datasets/futurecad/rewritten").glob("train-*.parquet"))
+rewritten = ds.dataset([str(path) for path in files], format="parquet")
+sample = next(rewritten.to_batches(batch_size=1)).to_pylist()[0]
+code = sample["code"]
+overall_description = sample["overall_description"]
+detail_description = sample["detail_description"]
+```
+
+Each program pairs with both description levels. `id` matches the same model
+in the dataset's default configuration; retain leading zeros. Programs and descriptions retain
+their original text. Save `code` as a Python file and use `visualize/render.py`
+to execute it and export geometry; start BRepGround first when the program uses
+`cq.Query`.
+
 ## BRepGround
+
+### OCC executability and selection semantics
+
+OpenCascade (OCC) has limited robustness for fillet, chamfer, and shell on some
+geometries. During dataset construction, referenced edges or faces for which
+OCC could not execute the requested operation were filtered out. Consequently,
+the released target selection can differ from the original Onshape user action;
+for example, some originally selected edges may be absent. The released entity
+labels and text queries refer to the retained, OCC-executable target selection.
 
 Restore the STEP and label files:
 

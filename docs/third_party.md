@@ -24,3 +24,12 @@ The authors' code is available under the [MIT license](../LICENSE).
 The [FutureCAD](https://huggingface.co/datasets/jhlee11/FutureCAD) and
 [BRepGround](https://huggingface.co/datasets/jhlee11/BRepGround) datasets use
 CC BY 4.0. Third-party dependencies retain their own licenses.
+
+## veRL reward manager
+
+`integrations/verl/naive.py` adapts the
+[veRL 0.6.1 reward manager](https://github.com/verl-project/verl/blob/v0.6.1/verl/workers/reward_manager/naive.py)
+from the veRL contributors and ByteDance. It replaces serial CAD scoring with
+bounded process-based concurrency. The file preserves the upstream copyright
+and Apache 2.0 notice; the full license is in
+[LICENSES/veRL.txt](../LICENSES/veRL.txt).

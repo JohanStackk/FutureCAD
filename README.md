@@ -82,6 +82,10 @@ python -m futurecad.convert --split test --id 00114630 --selection both --output
 python visualize/render.py --program outputs/converted-example/points/00114630.py --output-dir outputs/converted-view
 ```
 
+Claude-rewritten programs are available in the dataset's `rewritten`
+configuration, indexed by the original CAD model IDs.
+See [rewritten programs](docs/dataset.md#rewritten-programs).
+
 Generate the query-format programs and training pairs directly from Hugging Face:
 
 ```bash
@@ -167,6 +171,10 @@ See [dataset usage](docs/dataset.md) for input formats and evaluation commands.
 
 We use veRL with GSPO for reinforcement learning and provide the
 [reward function definition](src/futurecad/rewards/cad_reward.py).
+We also provide the [RL training script](scripts/train_rl.sh), the
+[RL prompt template](prompts/rl_prompt.txt), the
+[concurrent reward manager](integrations/verl/naive.py), and
+[training settings](docs/rl.md).
 For veRL setup and training instructions, see the
 [official veRL repository](https://github.com/verl-project/verl).
 
